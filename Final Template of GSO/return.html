@@ -29,12 +29,12 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
 
-<script>
-$(document).ready(function() {
-    $('#table1').DataTable();
-} );
-</script>
-	
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="DataTables-1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="DataTables-1.10.16/css/dataTables.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
 </head>
 <body>
 
@@ -148,67 +148,62 @@ $(document).ready(function() {
         </nav>
 		
 
+<style>
+.btn {
+    border: none;
+    color: white;
+    padding: 12px 26px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.success {background-color: #4CAF50;} /* Green */
+.success:hover {background-color: #46a049;}
+
+.danger {background-color: #f44336;} /* Red */ 
+.danger:hover {background: #da190b;}
+
+
+</style>
+
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Striped Table</h4>
-                                <p class="category">Here is a subtitle for this table</p>
+                                <h4 class="title">Table List</h4>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <table id="table1" class="table table-striped" cellspacing="0" width="100%">
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table1').dataTable();
+    });
+</script>
+                                <table id="table1" class="table table-striped" cellspacing="10" width="100%">
                                     <thead>
-                                        <th>ID</th>
-                                    	<th>Name</th>
-                                    	<th>Salary</th>
-                                    	<th>Country</th>
-                                    	<th>City</th>
+                                        <th>Item Name</th>
+                                    	<th>Description</th>
+                                    	<th>Quantity</th>
+                                    	<th>Date Returned</th>
+                                    	<th>Receive From</th>
+                                        <th>Reason</th>
+                                        <th>Action</th>
+
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        	<td>1</td>
-                                        	<td>Dakota Rice</td>
-                                        	<td>$36,738</td>
-                                        	<td>Niger</td>
-                                        	<td>Oud-Turnhout</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>2</td>
-                                        	<td>Minerva Hooper</td>
-                                        	<td>$23,789</td>
-                                        	<td>Curaçao</td>
-                                        	<td>Sinaai-Waas</td>
-                                        </tr>
-                                        <tr>
+                                        	<td>Laptop</td>
+                                        	<td>Lenovo, Black</td>
                                         	<td>3</td>
-                                        	<td>Sage Rodriguez</td>
-                                        	<td>$56,142</td>
-                                        	<td>Netherlands</td>
-                                        	<td>Baileux</td>
+                                        	<td>11/21/17</td>
+                                        	<td>Budget Office</td>
+                                            <td>Broken Screen</td>
+                                            <td><button class="btn success">Replace</button>
+                                            <button class="btn danger" >Ignore</button></td>
                                         </tr>
-                                        <tr>
-                                        	<td>4</td>
-                                        	<td>Philip Chaney</td>
-                                        	<td>$38,735</td>
-                                        	<td>Korea, South</td>
-                                        	<td>Overland Park</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>5</td>
-                                        	<td>Doris Greene</td>
-                                        	<td>$63,542</td>
-                                        	<td>Malawi</td>
-                                        	<td>Feldkirchen in Kärnten</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>6</td>
-                                        	<td>Mason Porter</td>
-                                        	<td>$78,615</td>
-                                        	<td>Chile</td>
-                                        	<td>Gloucester</td>
-                                        </tr>
+                                       
                                     </tbody>
                                 </table>
 
@@ -230,6 +225,7 @@ $(document).ready(function() {
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
@@ -249,6 +245,5 @@ $(document).ready(function() {
 
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
-
-
+  <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
 </html>
