@@ -147,23 +147,6 @@
         </nav>
 		
 
-<style>
-.btn {
-    border: none;
-    color: white;
-    padding: 12px 26px;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.success {background-color: #4CAF50;} /* Green */
-.success:hover {background-color: #46a049;}
-
-.danger {background-color: #f44336;} /* Red */ 
-.danger:hover {background: #da190b;}
-
-
-</style>
 
         <div class="content">
             <div class="container-fluid">
@@ -199,12 +182,22 @@
                                         	<td>11/21/17</td>
                                         	<td>Budget Office</td>
                                             <td>Broken Screen</td>
-                                            <td><button class="btn success">Replace</button>
-                                            <button class="btn danger" >Ignore</button></td>
+                                            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalNorm" >Replace</button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModalNorm" >Ignore</button></td>
+
+                                            <!-- Modal -->
+                                    
+
+
+
+            
+                                        
                                         </tr>
                                        
                                     </tbody>
                                 </table>
+
+
 
                             </div>
                         </div>
@@ -220,6 +213,54 @@
     </div>
 </div>
 
+
+                                 <!-- Modal content-->
+   <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Available Stock for this item is (# of items)
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form role="form">
+                  <div class="form-group">
+                    <label for="AccInput ">Account Code</label>
+                      <input type="AccountCode" class="form-control"
+             id="exampleInputEmail1" placeholder="Enter Account code"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="Serial">Serial No.</label>
+                      <input type="serial" class="form-control"
+               id="exampleInputPassword1" placeholder="Enter Serial"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="ReceivedBy">Received By</label>
+                      <input type="REceivedby" class="form-control"
+               id="JoyCabildo" placeholder=""/>
+                  </div>
+                     
+                 <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success"
+                        data-dismiss="modal">
+                            Save
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Cancel
+                </button>
+            </div>
 </body>
 
     <!--   Core JS Files   -->
