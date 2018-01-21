@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,20 +21,18 @@
     <!--  Paper Dashboard core CSS    -->
     <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
+
 
     <!--  Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/themify-icons.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="DataTables-1.10.16/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="DataTables-1.10.16/css/dataTables.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <link href="assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
 
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <script src="assets/js/jquery.min.js"></script>
 
 </head>
 <body>
@@ -149,7 +148,7 @@
             </div>
         </nav>
         
-<!-- end of add item button --> 
+<!-- end of add item button -->
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -158,7 +157,7 @@
                             <div class="header">
                                 <h4 class="title">Inventory</h4>
                     <br>
-         <!-- start of add item button --> 
+         <!-- start of add item button -->
                         <div class="container">
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add Item</button>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1">Add Bulk Items</button>
@@ -192,9 +191,9 @@
                                             <td>5</td>
                                             <td>Piece</td>
                                             <td>CO</td>
-                                            <td> 
+                                            <td>
 
-                                            
+
                                                 <button class="btn btn-success" data-toggle="modal" data-target="#addqty"><span class="glyphicon glyphicon-plus"></span></button>
                                                 <button class="btn btn-warning" data-toggle="modal" data-target="#subqty"><span class="glyphicon glyphicon-minus"></span></button>
                                                 <button class="btn btn-danger"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#edit"></span></button>
@@ -216,17 +215,17 @@
     </div>
 </div>
 
-<!-- start of modal of add item --> 
+<!-- start of modal of add item -->
             <!-- Modal -->
      <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-        
+
           <!-- Modal content-->
 
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              
+
               <h4 class="modal-title" align="center"><b>Add Item<b></h4>
             </div>
 
@@ -246,7 +245,7 @@
               <td>Quantity</td>
               <td><input class="InputBox" name="" value="" min = 0 required></td>
             </tr>
-            
+
             <tr>
               <td>Unit</td>
               <td>
@@ -270,7 +269,7 @@
                 <select id="type" list="typelist" name="Type" required>
                   <option selected="true" value="CO">CO</option>
                   <option value="MOOE">MOOE</option>
-                </select>   
+                </select>
             </td>
             </tr>
            <tr>
@@ -312,8 +311,8 @@
           <tr>
               <td>Supplier</td>
               <td><input class="InputBox" name="" value="" required></td>
-            </tr>     
-          </table> 
+            </tr>
+          </table>
             </div>
             <div class="modal-footer">
              <button type="submit" class="btn btn-primary" id="save1">Save</button>
@@ -327,7 +326,7 @@
 
 <!-- End of modal of add item  -->
 
-<!-- start of modal of add bulk items --> 
+<!-- start of modal of add bulk items -->
 <!-- Modal -->
 <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog" style="overflow-x:auto; width:auto ">
@@ -398,7 +397,7 @@
                             <td><input id="new_obr" name="Item_OBRNo[]" required style="width:150px;"></td>
                             <td><input id="new_serial" name="Item_Serial[]" required style="width:150px;"></td>
                             <td><input id="new_accountcode" name="Item_Accountcode[]" required style="width:150px;"></td>
-                            <td><input type="text" id="new_supplier" name="Item_Supplier[]" required style="width:150px;"></td>             
+                            <td><input type="text" id="new_supplier" name="Item_Supplier[]" required style="width:150px;"></td>
                         </tr>
                     </table>
                 </div>
@@ -496,11 +495,11 @@ function add_row()
 }
 </script>
 <!-- End of add bulk items js -->
-<!-- start of modal of add qty --> 
+<!-- start of modal of add qty -->
             <!-- Modal -->
      <div class="modal fade" id="addqty" role="dialog">
         <div class="modal-dialog">
-        
+
           <!-- Modal content-->
 
           <div class="modal-content">
@@ -548,7 +547,7 @@ function add_row()
                                 <td>Unit Cost</td>
                                 <td><input type="number" min='0' step='any' class="InputBox" name="" value="" required></td>
                               </tr>
-          </table> 
+          </table>
             </div>
             <div class="modal-footer">
             <button type="submit" class="btn btn-default" id="save1">Save</button>
@@ -562,11 +561,11 @@ function add_row()
 
 <!-- End of modal of add qty  -->
 
-<!-- start of modal of sub qty --> 
+<!-- start of modal of sub qty -->
             <!-- Modal -->
      <div class="modal fade" id="subqty" role="dialog">
         <div class="modal-dialog">
-        
+
           <!-- Modal content-->
 
           <div class="modal-content">
@@ -594,7 +593,7 @@ function add_row()
                               <td>Account Code</td>
                               <td><input type="text" class="InputBox" name="" value="" required></td>
                             </tr>
-          </table> 
+          </table>
             </div>
             <div class="modal-footer">
             <button type="submit" class="btn btn-default" id="save1">Save</button>
@@ -614,7 +613,7 @@ function add_row()
 
 <div class="modal fade" id="edit" role="dialog">
         <div class="modal-dialog">
-        
+
           <!-- Modal content-->
 
           <div class="modal-content">
@@ -642,7 +641,7 @@ function add_row()
                               <td>Type</td>
                               <td><input type="text" class="InputBox" name="" value="" required></td>
                             </tr>
-          </table> 
+          </table>
             </div>
             <div class="modal-footer">
             <button type="submit" class="btn btn-success" id="save1">Save</button>
@@ -655,7 +654,7 @@ function add_row()
 </div>
 <!-- End of modal of  edit -->
 
-<!-- start of modal of info --> 
+<!-- start of modal of info -->
             <!-- Modal -->
      <div class="modal fade" id="itemdetails" role="dialog">
     <div class="modal-dialog" style="overflow-x:auto; width:auto ">
@@ -702,7 +701,7 @@ function add_row()
                             <th></th>
                             <th>1-07-01-010</th>
                             <th>Samsung</th>
-                        </tr> 
+                        </tr>
                         </tbody>
                     </table>
             </div>
@@ -718,10 +717,7 @@ function add_row()
 <!-- End of modal of info  -->
 
 </body>
-
     <!--   Core JS Files   -->
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
     <!--  Checkbox, Radio & Switch Plugins -->
@@ -733,30 +729,6 @@ function add_row()
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
 
-    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-    <script src="assets/js/paper-dashboard.js"></script>
-
-    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-    <script src="assets/js/demo.js"></script>
-  <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script><!--   Core JS Files   -->
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-
-    <!--  Checkbox, Radio & Switch Plugins -->
-    <script src="assets/js/bootstrap-checkbox-radio.js"></script>
-
-    <!--  Charts Plugin -->
-    <script src="assets/js/chartist.min.js"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
-
-    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-    <script src="assets/js/paper-dashboard.js"></script>
-
-    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-    <script src="assets/js/demo.js"></script>
-  <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
 
 </html>
