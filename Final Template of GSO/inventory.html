@@ -30,9 +30,20 @@
     <!-- Bootstrap core CSS     -->
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
     <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.validate.min.js"></script>
+    <script src="assets/js/jquery.formtowizard.js"></script>
 
 </head>
+
+<style>
+        .wrap { max-width: 980px; margin: 10px auto 0; }
+        #steps { margin: 80px 0 0 0 }
+        .commands { overflow: hidden; margin-top: 30px; }
+        .error { color: #b33; }
+
+</style>
 
 <body>
 
@@ -300,77 +311,140 @@
 
         <!-- Modal content-->
         <div class="container" style="background-color:white; width:2750px; height: auto; size:50px;">
-            <h4 class="modal-title" align="center"><b>Add Items<b></h4>
+            <h4 class="modal-title" align="center"><b>Add Bulk<b></h4>
 
             <div class="modal-body">
 
                 <div id="wrapper">
-                    <table align='center' id="data_table" class="table table-bordered table-striped">
-                        <tr>
-                            <th style="width:150px;"></th>
-                            <th style="width:150px;">Item Name</th>
-                            <th style="width:150px;">Description</th>
-                            <th style="width:80px;">Quantity</th>
-                            <th style="width:80px;">Unit</th>
-                            <th style="width:80px;">Type</th>
-                            <th style="width:140px;">Delivery Date</th>
-                            <th style="width:140px;">Date Received</th>
-                            <th style="width:140px;">Expiration Date</th>
-                            <th style="width:150px;">Official Receipt</th>
-                            <th style="width:150px;">Received By</th>
-                            <th style="width:80px;">Cost per Unit</th>
-                            <th style="width:80px;">PO No.</th>
-                            <th style="width:80px;">PR No.</th>
-                            <th style="width:80px;">OBR No.</th>
-                            <th style="width:80px;">Serial</th>
-                            <th style="width:80px;">Account Code</th>
-                            <th style="width:150px;">Supplier</th>
-                        </tr>
 
-                        <tr>
-                            <td><input type="button" class="btn btn-success" onclick="add_row();" value="Add Row"></td>
-                            <td><input type="text" id="new_itemname" name="Item_Name[]" required style="width:150px;"></td>
-                            <td><input id="new_description" name="Item_Description[]" required style="width:150px;"></td>
-                            <td><input type="number" min=0 id="new_qty" name="Item_Quantity[]" required style="width:80px;"></td>
-                            <td>
+                    <div id='progress'>
+  <div id='progress-complete'>
+  </div>
+  </div>
 
-                                <input type="text" id="new_unit" name="Item_Unit[]" list="list" required style="width:80px; height: 25px;">
-                                <datalist id="list">
-                                    <option value="piece">piece</option>
-                                    <option value="box">box</option>
-                                    <option value="set">set</option>
-                                    <option value="ream">ream</option>
-                                    <option value="dozen">dozen</option>
-                                    <option value="bundle">bundle</option>
-                                    <option value="sack">sack</option>
-                                    <option value="others">others</option>
-                                </datalist>
-                            </td>
-                            <td><input type="text" id="new_type"  list="typelist" name="Item_Type[]" required style="width:80px;" pattern="CO|MOOE" title="Type must Be 'CO' or 'MOOE'">
-                                <span id="error"></span>
-                                <datalist id="typelist" >
-                                    <option value="CO">CO</option>
-                                    <option value="MOOE">MOOE</option>
-                                </datalist>
-                            </td>
-                            <td><input type="date"  id="new_deldate" value="" name="Item_Deliverydate[]" required style="width:140px;"></td>
-                            <td><input type="date"  id="new_datereceived" value="" name="Item_Datereceived[]" required style="width:140px;"></td>
-                            <td><input type="date"  id="new_expdate" value="" name="Item_Expirationdate[]" required style="width:140px;"></td>
-                            <td><input id="new_or" name="Item_OfficialReceipt[]" required style="width:150px;"></td>
-                            <td><input type="text" id="new_receivedby" name="Item_Receivedby[]" required style="width:150px;"></td>
-                             <td><input type="number" min="0" step='any' id="new_cost" name="Item_Cost[]" required style="width:80px;"></td>
-                            <td><input id="new_po" name="Item_PONo[]" required style="width:150px;"></td>
-                            <td><input id="new_pr" name="Item_PRNo[]" required style="width:150px;"></td>
-                            <td><input id="new_obr" name="Item_OBRNo[]" required style="width:150px;"></td>
-                            <td><input id="new_serial" name="Item_Serial[]" required style="width:150px;"></td>
-                            <td><input id="new_accountcode" name="Item_Accountcode[]" required style="width:150px;"></td>
-                            <td><input type="text" id="new_supplier" name="Item_Supplier[]" required style="width:150px;"></td>
-                        </tr>
-                    </table>
+    <form id="SignupForm" action="" method="post">
+        <fieldset class="form-horizontal" role="form">
+            <div class="form-group">
+            <label for="Name">Item Name</label>
+            <input type="text" id="new_itemname" name="Item_Name[]" class="form-control" required style="width:150px;">
+            </div>
+            <div class="form-group">
+            <label for="Description">Description</label>
+            <input id="new_description" name="Item_Description[]" class="form-control" required style="width:150px;">
+            </div>
+            <div class="form-group">
+            <label for="Quantity">Quantity</label>
+            <input type="number" min=0 id="new_qty" name="Item_Quantity[]" class="form-control" required style="width:80px;">
+            </div>
+      
+           <div class="form-group">
+            <label for="Unit" class="col-sm-2 control-label">Unit</label>
+            <div class="col-sm-10">
+        <div class="row">
+                <div class="col-xs-3">
+                <select id="Unit" class="form-control col-sm-2">
+        <option value=""></option>
+                  <option value="piece">piece</option>
+                  <option value="box">box</option>
+                  <option value="set">set</option>
+                  <option value="ream">ream</option>
+                  <option value="dozen">dozen</option>
+                  <option value="bundle">bundle</option>
+                  <option value="sack">sack</option>
+                  <option value="others">others</option>
+                </select>
+                </div>
+                
+              </div>
+      </div>
+           </div>
+      
+      <div class="form-group">
+            <label for="Type" class="col-sm-2 control-label">Type</label>
+            <div class="col-sm-10">
+        <div class="row">
+                <div class="col-xs-3">
+                <select id="Type" class="form-control col-sm-2">
+          <option value=""></option>
+                  <option value="CO">CO</option>
+                  <option value="MOOE">MOOE</option>
+                </select>
+                </div>
+                
+              </div>
+      </div>
+           </div>
+      
+            <div class="form-group">
+            <label for="Delivery Date">Delivery Date</label>
+            <input type="date"  id="new_deldate" value="" name="Item_Deliverydate[]" class="form-control" required style="width:140px;">
+            </div>
+      
+      <div class="form-group">
+            <label for="Date Received">Date Received</label>
+      <input type="date"  id="new_datereceived" value="" name="Item_Datereceived[]" class="form-control" required style="width:140px;">
+            </div>
+      
+      <div class="form-group">
+            <label for="Expiration Date">Expiration Date</label>
+      <input type="date"  id="new_expdate" value="" name="Item_Expirationdate[]" class="form-control" required style="width:140px;">
+            </div>
+      
+      <div class="form-group">
+            <label for="Official Receipt">Official Receipt</label>
+      <input id="new_or" name="Item_OfficialReceipt[]" class="form-control" required style="width:150px;">
+            </div>
+      
+      <div class="form-group">
+            <label for="Received By">Received By</label>
+      <input type="text" id="new_receivedby" name="Item_Receivedby[]" class="form-control" required style="width:150px;">
+            </div>
+      
+      <div class="form-group">
+            <label for="CostperUnit">Cost per Unit</label>
+      <input type="number" min="0" step='any' id="new_cost" name="Item_Cost[]" class="form-control" required style="width:80px;">
+            </div>
+      
+            <div class="form-group">
+            <label for="PONo">PO No</label>
+      <input id="new_po" name="Item_PONo[]" class="form-control" required style="width:150px;">
+            </div>
+      
+      <div class="form-group">
+            <label for="PRNo">PR No</label>
+      <input id="new_pr" name="Item_PRNo[]" class="form-control" required style="width:150px;">
+            </div>
+      
+      <div class="form-group">
+            <label for="OBRNo">OBR No</label>
+      <input id="new_obr" name="Item_OBRNo[]" class="form-control" required style="width:150px;">
+            </div>
+
+      
+        <div class="form-group">
+            <label for="Serial" class="col-sm-2 control-label">Serial</label>
+            <div class="col-sm-4">
+      <input id="new_serial" name="Item_Serial[]" class="form-control" required style="width:150px;">
+    </div>
+    
+    <div class="form-group">
+            <label for="Accountcode" class="col-sm-2 control-label">Accountcode</label>
+            <div class="col-sm-4">
+      <input id="new_accountcode" name="Item_Accountcode[]" class="form-control" required style="width:150px;">
+    </div>
+    
+    <div class="form-group">
+            <label for="Supplier" class="col-sm-2 control-label">Supplier</label>
+            <div class="col-sm-4">
+      <input type="text" id="new_supplier" name="Item_Supplier[]" class="form-control" required style="width:150px;">
+    </div>
+        </fieldset>
+    </form>
+
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="save1">Save</button>
+                <button id="add" type="submit" class="btn btn-primary" id="save1">Add</button>
                 <button type="button" class="btn btn-danger" id="cancel1" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -460,6 +534,33 @@ function add_row()
  document.getElementById("new_accountcode").value="";
  document.getElementById("new_supplier").value="";
 }
+
+
+        $( function() {
+            var $signupForm = $( '#SignupForm' );
+            
+            $signupForm.validate({
+                errorElement: 'em',
+                submitHandler: function (form) { 
+                    alert('submitted');
+                    form.submit();
+                }
+            });
+            
+            $signupForm.formToWizard({
+                submitButton: 'SaveAccount',
+                validateBeforeNext: function(form) {
+                    var stepIsValid = true;
+                    var validator = form.validate();
+                    $(':input').each( function(index) {
+                        var xy = validator.element(this);
+                        stepIsValid = stepIsValid && (typeof xy == 'undefined' || xy);
+                    });
+                    return stepIsValid;
+                },
+            });
+        });
+
 </script>
 <!-- End of add bulk items js -->
 <!-- start of modal of add qty -->

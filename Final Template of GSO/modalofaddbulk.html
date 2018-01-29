@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Form</title>
+
+    <link href="assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <style>
+        .wrap { max-width: 980px; margin: 10px auto 0; }
+        .commands { overflow: hidden; margin-top: 30px; }
+        .error { color: #b33; }
+    </style>
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.validate.min.js"></script>
+    <script src="assets/js/jquery.formtowizard.js"></script>
+    
+    <script>
+        $( function() {
+            var $signupForm = $( '#SignupForm' );
+            
+            $signupForm.validate({
+                errorElement: 'em',
+                submitHandler: function (form) { 
+                    alert('submitted');
+                    form.submit();
+                }
+            });
+            
+            $signupForm.formToWizard({
+                submitButton: 'SaveAccount',
+                validateBeforeNext: function(form, step) {
+                    var stepIsValid = true;
+                    var validator = form.validate();
+                    $(':input', step).each( function(index) {
+                        var xy = validator.element(this);
+                        stepIsValid = stepIsValid && (typeof xy == 'undefined' || xy);
+                    });
+                    return stepIsValid;
+                },
+            });
+        });
+    </script>
+    
+</head>
+
+<body>
+<div class="row wrap">
+<div class="col-lg-12">
+
+    <div id='progress'>
+	<div id='progress-complete'>
+	</div>
+	</div>
+
+    <form id="SignupForm" action="" method="post">
+            <legend>Add Bulk</legend>
+            <div class="form-group">
+            <label for="Name">Item Name</label>
+            <input type="text" id="new_itemname" name="Item_Name[]" class="form-control" required style="width:150px;">
+            </div>
+            <div class="form-group">
+            <label for="Description">Description</label>
+            <input id="new_description" name="Item_Description[]" class="form-control" required style="width:150px;">
+            </div>
+            <div class="form-group">
+            <label for="Quantity">Quantity</label>
+            <input type="number" min=0 id="new_qty" name="Item_Quantity[]" class="form-control" required style="width:80px;">
+            </div>
+			
+           <div class="form-group">
+            <label for="Unit" class="col-sm-2 control-label">Unit</label>
+            <div class="col-sm-10">
+			  <div class="row">
+                <div class="col-xs-3">
+                <select id="Unit" class="form-control col-sm-2">
+				<option value=""></option>
+                  <option value="piece">piece</option>
+                  <option value="box">box</option>
+                  <option value="set">set</option>
+                  <option value="ream">ream</option>
+                  <option value="dozen">dozen</option>
+                  <option value="bundle">bundle</option>
+                  <option value="sack">sack</option>
+                  <option value="others">others</option>
+                </select>
+                </div>
+                
+              </div>
+			</div>
+           </div>
+			
+		  <div class="form-group">
+            <label for="Type" class="col-sm-2 control-label">Type</label>
+            <div class="col-sm-10">
+			  <div class="row">
+                <div class="col-xs-3">
+                <select id="Type" class="form-control col-sm-2">
+				  <option value=""></option>
+                  <option value="CO">CO</option>
+                  <option value="MOOE">MOOE</option>
+                </select>
+                </div>
+                
+              </div>
+			</div>
+           </div>
+			
+            <div class="form-group">
+            <label for="Delivery Date">Delivery Date</label>
+            <input type="date"  id="new_deldate" value="" name="Item_Deliverydate[]" class="form-control" required style="width:140px;">
+            </div>
+			
+			<div class="form-group">
+            <label for="Date Received">Date Received</label>
+			<input type="date"  id="new_datereceived" value="" name="Item_Datereceived[]" class="form-control" required style="width:140px;">
+            </div>
+			
+			<div class="form-group">
+            <label for="Expiration Date">Expiration Date</label>
+			<input type="date"  id="new_expdate" value="" name="Item_Expirationdate[]" class="form-control" required style="width:140px;">
+            </div>
+			
+			<div class="form-group">
+            <label for="Official Receipt">Official Receipt</label>
+			<input id="new_or" name="Item_OfficialReceipt[]" class="form-control" required style="width:150px;">
+            </div>
+			
+			<div class="form-group">
+            <label for="Received By">Received By</label>
+			<input type="text" id="new_receivedby" name="Item_Receivedby[]" class="form-control" required style="width:150px;">
+            </div>
+			
+			<div class="form-group">
+            <label for="CostperUnit">Cost per Unit</label>
+			<input type="number" min="0" step='any' id="new_cost" name="Item_Cost[]" class="form-control" required style="width:80px;">
+            </div>
+			
+            <div class="form-group">
+            <label for="PONo">PO No</label>
+			<input id="new_po" name="Item_PONo[]" class="form-control" required style="width:150px;">
+            </div>
+			
+			<div class="form-group">
+            <label for="PRNo">PR No</label>
+			<input id="new_pr" name="Item_PRNo[]" class="form-control" required style="width:150px;">
+            </div>
+			
+			<div class="form-group">
+            <label for="OBRNo">OBR No</label>
+			<input id="new_obr" name="Item_OBRNo[]" class="form-control" required style="width:150px;">
+            </div>
+
+			
+        <div class="form-group">
+            <label for="Serial" class="col-sm-2 control-label">Serial</label>
+            <div class="col-sm-4">
+			<input id="new_serial" name="Item_Serial[]" class="form-control" required style="width:150px;">
+		</div>
+		
+		<div class="form-group">
+            <label for="Accountcode" class="col-sm-2 control-label">Accountcode</label>
+            <div class="col-sm-4">
+			<input id="new_accountcode" name="Item_Accountcode[]" class="form-control" required style="width:150px;">
+		</div>
+		
+		<div class="form-group">
+            <label for="Supplier" class="col-sm-2 control-label">Supplier</label>
+            <div class="col-sm-4">
+			<input type="text" id="new_supplier" name="Item_Supplier[]" class="form-control" required style="width:150px;">
+		</div>
+        
+
+        <button id="add" type="submit" class="btn btn-primary submit">Add</button>
+
+    </form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
